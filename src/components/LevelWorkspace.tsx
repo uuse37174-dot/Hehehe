@@ -209,7 +209,7 @@ export default function LevelWorkspace({ level, onBack }: LevelWorkspaceProps) {
             <ChevronLeft className="w-5 h-5" />
           </button>
           <div>
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex flex-wrap items-center gap-2 mb-1">
               <span className="text-[10px] bg-green-500/10 text-green-400 border border-green-500/30 px-2 py-0.5 rounded font-mono font-bold">
                 LEVEL {level.id}
               </span>
@@ -217,7 +217,7 @@ export default function LevelWorkspace({ level, onBack }: LevelWorkspaceProps) {
                 {level.difficulty} • {level.phase}
               </span>
             </div>
-            <h1 className="text-xl md:text-2xl font-mono font-bold text-white tracking-wide">{level.title}</h1>
+            <h1 className="text-xl md:text-2xl font-mono font-bold text-white tracking-wide break-words">{level.title}</h1>
           </div>
         </div>
 
@@ -348,42 +348,46 @@ export default function LevelWorkspace({ level, onBack }: LevelWorkspaceProps) {
                     <div key={tId} className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-md">
                       <button
                         onClick={() => setActiveTopicId(isExpanded ? null : tId)}
-                        className="w-full text-left px-5 py-3.5 flex items-center justify-between hover:bg-zinc-850/30 transition"
+                        className="w-full text-left px-4 sm:px-5 py-3.5 flex items-center justify-between hover:bg-zinc-850/30 transition gap-3"
                       >
-                        <div className="flex items-center gap-2.5">
-                          <span className="text-xs bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded font-mono">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 min-w-0 flex-1">
+                          <span className="text-[10px] bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded font-mono shrink-0 self-start sm:self-auto">
                             {t.category}
                           </span>
-                          <span className="text-sm font-mono font-bold text-white">{t.title}</span>
+                          <span className="text-xs sm:text-sm font-mono font-bold text-white break-words pr-2 leading-relaxed">
+                            {t.title}
+                          </span>
                         </div>
-                        {isExpanded ? (
-                          <ChevronUp className="w-4 h-4 text-zinc-500" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4 text-zinc-500" />
-                        )}
+                        <div className="shrink-0 text-zinc-500">
+                          {isExpanded ? (
+                            <ChevronUp className="w-4 h-4" />
+                          ) : (
+                            <ChevronDown className="w-4 h-4" />
+                          )}
+                        </div>
                       </button>
 
                       {isExpanded && (
-                        <div className="p-5 border-t border-zinc-800 space-y-4 text-zinc-300 text-sm font-sans leading-relaxed">
+                        <div className="p-4 sm:p-5 border-t border-zinc-800 space-y-4 text-zinc-300 text-sm font-sans leading-relaxed">
                           <div>
                             <span className="text-[10px] text-zinc-500 font-mono font-semibold uppercase block mb-1">
                               Explanation & Mechanics
                             </span>
-                            <p>{t.explanation}</p>
+                            <p className="break-words">{t.explanation}</p>
                           </div>
 
-                          <div className="bg-green-500/5 border-l-2 border-green-500 p-3.5 rounded-r">
+                          <div className="bg-green-500/5 border-l-2 border-green-500 p-3 sm:p-3.5 rounded-r">
                             <span className="text-[10px] text-green-400 font-mono font-semibold uppercase block mb-1">
                               An Intuitive Analogy
                             </span>
-                            <p className="text-xs text-zinc-400 italic">"{t.analogy}"</p>
+                            <p className="text-xs text-zinc-400 italic break-words">"{t.analogy}"</p>
                           </div>
 
                           <div>
                             <span className="text-[10px] text-zinc-500 font-mono font-semibold uppercase block mb-1.5">
                               Real-World Exploit Scenario
                             </span>
-                            <p className="text-xs text-zinc-400">{t.realWorldExample}</p>
+                            <p className="text-xs text-zinc-400 break-words">{t.realWorldExample}</p>
                           </div>
 
                           {t.commands.length > 0 && (
@@ -393,10 +397,10 @@ export default function LevelWorkspace({ level, onBack }: LevelWorkspaceProps) {
                               </span>
                               <div className="space-y-2.5">
                                 {t.commands.map((cmd, cIdx) => (
-                                  <div key={cIdx} className="bg-zinc-950 border border-zinc-800/80 rounded-lg p-3 flex flex-col gap-2 font-mono text-xs">
+                                  <div key={cIdx} className="bg-zinc-950 border border-zinc-800/80 rounded-lg p-3 flex flex-col gap-2 font-mono text-xs w-full min-w-0">
                                     <div className="flex justify-between items-start gap-3 w-full min-w-0">
-                                      <div className="overflow-x-auto w-full pr-2 scrollbar-thin scrollbar-thumb-zinc-800">
-                                        <code className="text-green-300 select-all font-bold leading-relaxed whitespace-nowrap block py-0.5">{cmd.cmd}</code>
+                                      <div className="overflow-x-auto w-full pr-2 scrollbar-thin scrollbar-thumb-zinc-800 min-w-0">
+                                        <code className="text-green-300 select-all font-bold leading-relaxed whitespace-pre-wrap break-all block py-0.5">{cmd.cmd}</code>
                                       </div>
                                       <button
                                         onClick={() => copyCommand(cmd.cmd)}

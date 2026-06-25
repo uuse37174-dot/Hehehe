@@ -48,12 +48,6 @@ export function LoginPage() {
     }, 900);
   };
 
-  const handleFillAdmin = () => {
-    setEmail("beatbounce181@gmail.com");
-    setPassword("Dayal@123Avijit@123");
-    setError(null);
-  };
-
   return (
     <div className="min-h-screen bg-zinc-950 flex items-center justify-center p-4 relative overflow-hidden select-none font-sans">
       
@@ -87,7 +81,7 @@ export function LoginPage() {
             <Terminal className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
             <div className="text-[11px] font-mono leading-relaxed text-zinc-400">
               <span className="text-green-400 font-bold block mb-0.5">SYLLABUS PORTAL SECURITY</span>
-              Log in with any email and password to track progress, or enter administrator credentials to unlock all 100 training courses automatically.
+              Authentication required. Enter the authorized administrative email and password to decrypt the syllabus database and access the simulation sandbox terminal.
             </div>
           </div>
         </div>
@@ -177,29 +171,9 @@ export function LoginPage() {
           </button>
         </form>
 
-        {/* Separator / Sandbox Presets */}
-        <div className="mt-6 pt-5 border-t border-zinc-800/80">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Authorized Bypass Key:</span>
-          </div>
-          <button
-            type="button"
-            onClick={handleFillAdmin}
-            className="w-full bg-green-500/5 hover:bg-green-500/10 border border-green-500/30 rounded-xl p-3 text-left transition cursor-pointer flex items-center justify-between"
-          >
-            <div>
-              <span className="block text-[11px] font-mono font-bold text-green-400">ADMINISTRATOR CREDENTIALS</span>
-              <span className="block text-[9px] font-mono text-zinc-500">Auto-fill authorized portal bypass key</span>
-            </div>
-            <span className="text-[10px] font-mono text-green-400 border border-green-400/30 px-2 py-0.5 rounded bg-green-950/40">
-              Apply
-            </span>
-          </button>
-        </div>
-
         {/* Bottom Footer Details */}
         <div className="mt-6 text-center text-[10px] font-mono text-zinc-600">
-          SECURE PROTOCOL v4.12.8 • AUTH_BYPASS_LOCAL_READY
+          SECURE PROTOCOL v4.12.8 • MFA_REQUIRED_SESSION_PASS
         </div>
       </motion.div>
     </div>

@@ -105,10 +105,10 @@ export default function TerminalCheatsheet() {
 
             <div className="p-4 space-y-4">
               {group.commands.map((c, cIdx) => (
-                <div key={cIdx} className="bg-zinc-950/80 border border-zinc-800/50 rounded-lg p-3">
+                <div key={cIdx} className="bg-zinc-950/80 border border-zinc-800/50 rounded-lg p-3 w-full min-w-0">
                   <div className="flex justify-between items-start gap-4 w-full min-w-0">
-                    <div className="overflow-x-auto w-full pr-2 scrollbar-thin scrollbar-thumb-zinc-800">
-                      <code className="text-xs font-mono text-green-300 select-all whitespace-nowrap block py-0.5">{c.cmd}</code>
+                    <div className="overflow-x-auto w-full pr-2 scrollbar-thin scrollbar-thumb-zinc-800 min-w-0">
+                      <code className="text-xs font-mono text-green-300 select-all whitespace-pre-wrap break-all block py-0.5">{c.cmd}</code>
                     </div>
                     <button
                       onClick={() => copyToClipboard(c.cmd)}
