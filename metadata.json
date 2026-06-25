@@ -1,0 +1,6 @@
+{
+  "name": "HackRoad",
+  "description": "The Ultimate Ethical Hacking Roadmap & Learning Platform with 100 Progressive Levels. Pure offline and highly educational.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

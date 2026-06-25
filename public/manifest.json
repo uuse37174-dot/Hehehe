@@ -1,0 +1,24 @@
+{
+  "name": "HackRoad - Ethical Hacking Learning Platform",
+  "short_name": "HackRoad",
+  "description": "The Ultimate 100-Level Ethical Hacking Roadmap & Interactive Pen-Testing Syllabus.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#09090b",
+  "theme_color": "#22c55e",
+  "icons": [
+    {
+      "src": "/icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
