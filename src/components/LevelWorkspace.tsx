@@ -45,7 +45,8 @@ export default function LevelWorkspace({ level, onBack }: LevelWorkspaceProps) {
     saveQuizProgress,
     notes,
     saveNote,
-    deleteNote
+    deleteNote,
+    user
   } = useStore();
 
   const [activeTab, setActiveTab] = useState<"learn" | "quiz" | "simulation" | "notes">("learn");
@@ -109,8 +110,8 @@ export default function LevelWorkspace({ level, onBack }: LevelWorkspaceProps) {
     }
   }, [level, notes]);
 
-  const levelPassedQuiz = quizProgress[level.id]?.passed;
-  const isLevelCompleted = completedLevels.includes(level.id);
+  const levelPassedQuiz = user?.isAdmin || !!quizProgress[level.id]?.passed;
+  const isLevelCompleted = user?.isAdmin || completedLevels.includes(level.id);
 
   // Handle quiz option selection
   const handleSelectOption = (optionIdx: number) => {

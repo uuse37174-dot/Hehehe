@@ -29,8 +29,11 @@ export const useStore = create<UserState>()(
 
       login: (email: string, password: string) => {
         const isAdmin = email.trim() === "beatbounce181@gmail.com" && password === "Dayal@123Avijit@123";
-        set({ user: { email: email.trim(), isAdmin } });
-        return isAdmin;
+        if (isAdmin) {
+          set({ user: { email: email.trim(), isAdmin: true } });
+          return true;
+        }
+        return false;
       },
 
       logout: () => {
@@ -154,7 +157,12 @@ export const useStore = create<UserState>()(
         }),
     }),
     {
-      name: "hackroad-user-progress-v1", // local storage key
+      name: "hackroad-admin-secured-v3", // local storage key
+      partialize: (state) => {
+        // Exclude 'user' from persistence to ensure login page always comes first on reload
+        const { user, ...rest } = state;
+        return rest;
+      },
     }
   )
 );

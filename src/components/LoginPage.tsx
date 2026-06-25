@@ -36,9 +36,11 @@ export function LoginPage() {
     // Simulate standard system latency for a cool secure handshake feel
     setTimeout(() => {
       try {
-        const isAdmin = login(trimmedEmail, password);
+        const success = login(trimmedEmail, password);
         setIsLoading(false);
-        // Successful login
+        if (!success) {
+          setError("Access Denied: Invalid Administrative Credentials.");
+        }
       } catch (err) {
         setIsLoading(false);
         setError("Cryptographic handshake failed. Please check credentials.");
@@ -49,12 +51,6 @@ export function LoginPage() {
   const handleFillAdmin = () => {
     setEmail("beatbounce181@gmail.com");
     setPassword("Dayal@123Avijit@123");
-    setError(null);
-  };
-
-  const handleFillStudent = () => {
-    setEmail("student@hackroad.org");
-    setPassword("Syllabus@2026");
     setError(null);
   };
 
@@ -184,26 +180,21 @@ export function LoginPage() {
         {/* Separator / Sandbox Presets */}
         <div className="mt-6 pt-5 border-t border-zinc-800/80">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Fast Sandbox Presets:</span>
+            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">Authorized Bypass Key:</span>
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <button
-              type="button"
-              onClick={handleFillStudent}
-              className="bg-zinc-950 hover:bg-zinc-800 border border-zinc-800/80 rounded-xl p-2 text-left transition cursor-pointer"
-            >
-              <span className="block text-[10px] font-mono font-bold text-zinc-300">Student Account</span>
-              <span className="block text-[8px] font-mono text-zinc-500">Regular training tracks</span>
-            </button>
-            <button
-              type="button"
-              onClick={handleFillAdmin}
-              className="bg-green-500/5 hover:bg-green-500/10 border border-green-500/30 rounded-xl p-2 text-left transition cursor-pointer"
-            >
-              <span className="block text-[10px] font-mono font-bold text-green-400">Admin Account</span>
-              <span className="block text-[8px] font-mono text-green-600">All 100 levels unlocked</span>
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={handleFillAdmin}
+            className="w-full bg-green-500/5 hover:bg-green-500/10 border border-green-500/30 rounded-xl p-3 text-left transition cursor-pointer flex items-center justify-between"
+          >
+            <div>
+              <span className="block text-[11px] font-mono font-bold text-green-400">ADMINISTRATOR CREDENTIALS</span>
+              <span className="block text-[9px] font-mono text-zinc-500">Auto-fill authorized portal bypass key</span>
+            </div>
+            <span className="text-[10px] font-mono text-green-400 border border-green-400/30 px-2 py-0.5 rounded bg-green-950/40">
+              Apply
+            </span>
+          </button>
         </div>
 
         {/* Bottom Footer Details */}
